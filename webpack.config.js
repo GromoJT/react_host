@@ -45,7 +45,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
 
-        solidjs_counter: "solidjs_counter@http://localhost:3001/remoteEntry.js"
+        solidjs_counter: "solidjs_counter@https://tc-support-domain.web.app/remoteEntry.js"
 
       },
       exposes: {},
