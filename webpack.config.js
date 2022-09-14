@@ -44,9 +44,8 @@ module.exports = {
       name: "react_host",
       filename: "remoteEntry.js",
       remotes: {
-
-        solidjs_counter: "solidjs_counter@https://tc-support-domain.web.app/remoteEntry.js"
-
+        solidjs_counter: "solidjs_counter@https://tc-support-domain.web.app/remoteEntry.js",
+        react_dogs_module: "react_dogs_module@http://random-dog-component.web.app//remoteEntry.js"
       },
       exposes: {},
       shared: {
