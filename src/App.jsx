@@ -6,7 +6,7 @@ import "./index.scss";
 import TwNavbar from "./components/TwNavbar";
 
 import WrapedCounter from "./components/WrapedCounter";
-import Dog from 'react_dogs_module/Dog'
+
 
 const App = () => {
 
@@ -27,7 +27,7 @@ const App = () => {
       <WrapedCounter />
     
     <hr/>
-      <Dog />
+      
     </div >
     
   </>
