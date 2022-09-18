@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://tc-quest-nr2.web.app/",
+    publicPath: "http://localhost:3000/",
   },
 
   resolve: {
@@ -44,8 +44,6 @@ module.exports = {
       name: "react_host",
       filename: "remoteEntry.js",
       remotes: {
-        solidjs_counter: "solidjs_counter@https://tc-support-domain.web.app/remoteEntry.js",
-        
       },
       exposes: {},
       shared: {

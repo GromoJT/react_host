@@ -1,16 +1,46 @@
-import React,{useRef,useEffect} from "react";
-import ReactDOM, { render } from "react-dom";
-
+import React,{useRef,useEffect, useState} from "react";
 import "./index.scss";
+import {loadComponent} from './utils/loadComponent';
 
 import TwNavbar from "./components/TwNavbar";
 
 import WrapedCounter from "./components/WrapedCounter";
 
 
+function System(props) {
+  const {
+    system,
+    system: { remote, url, module },
+  } = props;
+
+  if (!system || !remote || !url || !module) {
+    return <h2>No system specified</h2>;
+  }
+
+  const Component = React.lazy(loadComponent(remote, 'default', module, url));
+
+  return (
+    <React.Suspense fallback="Loading System">
+      <Component />
+    </React.Suspense>
+  );
+}
+
 const App = () => {
 
+  const [dogsComp,setDogsComp] = useState({});
 
+  function setDogs(){
+    setDogsComp({
+      remote: 'react_q2_dogs',
+      url:'https://dip-d9e82.web.app/remoteEntry.js',
+      module:'./Dog',
+    });
+  }
+
+  useEffect(()=>{
+    setDogs()
+  },[]);
 
   return(
     <>
@@ -24,10 +54,14 @@ const App = () => {
     </div>
     
     <hr/>
-      <WrapedCounter />
-    
+      <WrapedCounter>
+        
+      </WrapedCounter>
+     
     <hr/>
-      
+      <div>
+        <System system={dogsComp} />
+      </div>
     </div >
     
   </>
@@ -35,4 +69,5 @@ const App = () => {
   
   
 };
-ReactDOM.render(<App />, document.getElementById("app"));
+export default App;
+
