@@ -1,34 +1,16 @@
 import React,{useRef,useEffect, useState} from "react";
 import "./index.scss";
-import {loadComponent} from './utils/loadComponent';
 
+import { System } from "./utils/System";
 import TwNavbar from "./components/TwNavbar";
 
-import WrapedCounter from "./components/WrapedCounter";
 
 
-function System(props) {
-  const {
-    system,
-    system: { remote, url, module },
-  } = props;
-
-  if (!system || !remote || !url || !module) {
-    return <h2>No system specified</h2>;
-  }
-
-  const Component = React.lazy(loadComponent(remote, 'default', module, url));
-
-  return (
-    <React.Suspense fallback="Loading System">
-      <Component />
-    </React.Suspense>
-  );
-}
 
 const App = () => {
 
   const [dogsComp,setDogsComp] = useState({});
+  const [counterComp,setCounterComp] = useState({});
 
   function setDogs(){
     setDogsComp({
@@ -38,8 +20,17 @@ const App = () => {
     });
   }
 
+  function setCounter(){
+    setCounterComp({
+      remote: 'angularQ2Counter',
+      url:'http://localhost:4200/remoteEntry.js',
+      module:'./Component',
+    });
+  }
+
   useEffect(()=>{
-    setDogs()
+    setDogs();
+    setCounter();
   },[]);
 
   return(
@@ -54,9 +45,6 @@ const App = () => {
     </div>
     
     <hr/>
-      <WrapedCounter>
-        
-      </WrapedCounter>
      
     <hr/>
       <div>

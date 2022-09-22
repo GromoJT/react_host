@@ -44,6 +44,7 @@ module.exports = {
       name: "react_host",
       filename: "remoteEntry.js",
       remotes: {
+      
       },
       exposes: {},
       shared: {
